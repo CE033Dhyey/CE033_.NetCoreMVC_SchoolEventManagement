@@ -1,0 +1,40 @@
+﻿@model SchoolEventMvc.Models.DTO.EventListVm
+@{
+}
+<div class="tbl-container">
+    <h2>Genres</h2>
+
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>EventDate</th>
+            <th>Image</th>
+            <th>Organizer</th>
+            <th>Coordinator</th>
+            
+        </tr>
+        @foreach (var item in Model.EventList)
+        {
+           
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.GenreNames</td>
+                <td>@item.EventDate</td>
+
+                <td><img style="height:60px;width:80px" src="/Uploads/@item.EventImage" /></td>
+                <td>@item.Organizer</td>
+                <td>@item.Coordinator</td>
+              
+                <td>
+                    <a href="/Event/Edit?id=@item.Id" class="btn btn-default"><i class="fa fa-edit"></i></a>
+                    <a onclick="return window.confirm('Are you sure?')" href="/Event/Delete?id=@item.Id" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div class="input-container">
+        <a href="/Event/Add" class="btn btn-sec">Back</a>
+    </div>
+</div>
